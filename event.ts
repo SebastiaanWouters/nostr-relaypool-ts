@@ -3,7 +3,7 @@ import {Author} from "./author";
 import {RelayPool} from "./relay-pool";
 
 export type {NostrToolsEvent};
-export type NostrToolsEventWithId = NostrToolsEvent & {id: string};
+export type NostrToolsEventWithId = NostrToolsEvent;
 import type {OnEvent} from "./on-event-filters";
 export class Event implements NostrToolsEventWithId {
   id: string;
@@ -16,7 +16,7 @@ export class Event implements NostrToolsEventWithId {
   relays: string[];
 
   constructor(
-    event: NostrToolsEvent & {id: string},
+    event: NostrToolsEvent,
     relayPool: RelayPool,
     relays: string[]
   ) {
