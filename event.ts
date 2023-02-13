@@ -76,4 +76,16 @@ export class Event implements NostrToolsEventWithId {
       maxDelayms
     );
   }
+
+  directReplies(cb: OnEvent, maxDelayms: number): () => void {
+    let relays = this.relays;
+
+    return this.relayPool.subscribe(
+      [{"#e": [this.id]}],
+      relays,
+      cb,
+      maxDelayms
+    );
+  }
+    
 }

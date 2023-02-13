@@ -206,4 +206,19 @@ export class Author {
       maxDelayms
     );
   }
+
+  longForm(cb: OnEvent, limit = 100, maxDelayms: number): () => void {
+    return this.relayPool.subscribe(
+      [
+        {
+          authors: [this.pubkey],
+          kinds: [30023],
+          limit,
+        },
+      ],
+      this.relays,
+      cb,
+      maxDelayms
+    );
+  }
 }
